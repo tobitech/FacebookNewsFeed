@@ -1,26 +1,138 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Daj-rb-QEO">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="TaB-UE-pzv">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Daj-rb-QEO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fNC-eO-N7O">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.20000000000000001" green="0.3529411764705882" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ioA-IU-fFP" kind="relationship" relationship="rootViewController" id="K7r-OI-0mi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v1Z-uY-k2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="40.799999999999997" y="765.96701649175418"/>
+        </scene>
+        <!--Feed-->
+        <scene sceneID="1Lw-7j-OmG">
+            <objects>
+                <collectionViewController id="ioA-IU-fFP" customClass="FeedController" customModule="MyFacebookFeed" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="Rb9-Uh-Sr2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="F3x-Qv-iAY">
+                            <size key="itemSize" width="374" height="300"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellId" id="57g-95-pDo" customClass="FeedCell" customModule="MyFacebookFeed" customModuleProvider="target">
+                                <rect key="frame" x="1" y="0.0" width="374" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="300"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zuckprofile" translatesAutoresizingMaskIntoConstraints="NO" id="fHK-CY-Zfb">
+                                            <rect key="frame" x="8" y="8" width="44" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="44" id="eo3-eB-ob6"/>
+                                                <constraint firstAttribute="width" constant="44" id="gzf-gZ-ta1"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December 18  •  San Francisco  •  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmq-1y-aQQ">
+                                            <rect key="frame" x="60" y="29" width="194" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="O6Z-rr-uvi"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.60784313725490191" green="0.63137254901960782" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="globe_small" translatesAutoresizingMaskIntoConstraints="NO" id="Nxr-i7-0r7">
+                                            <rect key="frame" x="262" y="33" width="12" height="12"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="12" id="lkC-Qg-ORZ"/>
+                                                <constraint firstAttribute="width" constant="12" id="tSN-9g-uqa"/>
+                                            </constraints>
+                                        </imageView>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Meanwhile, Beast turned to the dark side." translatesAutoresizingMaskIntoConstraints="NO" id="AGt-1a-E5W">
+                                            <rect key="frame" x="8" y="57" width="358" height="30"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="KrC-ZH-w11"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="zuckdog" translatesAutoresizingMaskIntoConstraints="NO" id="ghM-i7-J80">
+                                            <rect key="frame" x="0.0" y="95" width="374" height="205"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark Zuckerberg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUZ-JC-aE7">
+                                            <rect key="frame" x="60" y="12" width="306" height="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="fHK-CY-Zfb" firstAttribute="top" secondItem="57g-95-pDo" secondAttribute="top" constant="8" id="0kx-eM-4xy"/>
+                                    <constraint firstAttribute="trailing" secondItem="dUZ-JC-aE7" secondAttribute="trailing" constant="8" id="6Fx-Q5-Boc"/>
+                                    <constraint firstItem="Qmq-1y-aQQ" firstAttribute="leading" secondItem="dUZ-JC-aE7" secondAttribute="leading" id="EvT-yP-xmD"/>
+                                    <constraint firstItem="ghM-i7-J80" firstAttribute="leading" secondItem="57g-95-pDo" secondAttribute="leading" id="KUc-Yp-4Ux"/>
+                                    <constraint firstItem="Nxr-i7-0r7" firstAttribute="leading" secondItem="Qmq-1y-aQQ" secondAttribute="trailing" constant="8" id="O80-Uq-lXy"/>
+                                    <constraint firstAttribute="trailing" secondItem="ghM-i7-J80" secondAttribute="trailing" id="Q4T-DH-Mqm"/>
+                                    <constraint firstItem="fHK-CY-Zfb" firstAttribute="leading" secondItem="57g-95-pDo" secondAttribute="leading" constant="8" id="QLM-o0-fbl"/>
+                                    <constraint firstItem="dUZ-JC-aE7" firstAttribute="leading" secondItem="fHK-CY-Zfb" secondAttribute="trailing" constant="8" id="SQX-n9-tZw"/>
+                                    <constraint firstItem="dUZ-JC-aE7" firstAttribute="top" secondItem="57g-95-pDo" secondAttribute="top" constant="12" id="Umo-A0-mxC"/>
+                                    <constraint firstItem="AGt-1a-E5W" firstAttribute="top" secondItem="Qmq-1y-aQQ" secondAttribute="bottom" constant="8" id="eN5-HT-n03"/>
+                                    <constraint firstItem="Nxr-i7-0r7" firstAttribute="centerY" secondItem="Qmq-1y-aQQ" secondAttribute="centerY" id="gtF-bC-YVj"/>
+                                    <constraint firstAttribute="trailing" secondItem="AGt-1a-E5W" secondAttribute="trailing" constant="8" id="hzh-Yd-iDp"/>
+                                    <constraint firstAttribute="bottom" secondItem="ghM-i7-J80" secondAttribute="bottom" id="jkI-Sa-2dO"/>
+                                    <constraint firstItem="Qmq-1y-aQQ" firstAttribute="top" secondItem="dUZ-JC-aE7" secondAttribute="bottom" id="lQZ-GZ-xPd"/>
+                                    <constraint firstItem="ghM-i7-J80" firstAttribute="top" secondItem="AGt-1a-E5W" secondAttribute="bottom" constant="8" id="mJX-aY-GP1"/>
+                                    <constraint firstItem="AGt-1a-E5W" firstAttribute="leading" secondItem="57g-95-pDo" secondAttribute="leading" constant="8" id="rA8-Bz-wjg"/>
+                                </constraints>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="ioA-IU-fFP" id="7qp-6N-kjJ"/>
+                            <outlet property="delegate" destination="ioA-IU-fFP" id="czs-Ii-fuh"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Feed" id="NWs-fh-iVO"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0oB-Xx-qdo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1111.2" y="193.85307346326837"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="globe_small" width="24" height="24"/>
+        <image name="zuckdog" width="2038" height="1359"/>
+        <image name="zuckprofile" width="200" height="200"/>
+    </resources>
 </document>
