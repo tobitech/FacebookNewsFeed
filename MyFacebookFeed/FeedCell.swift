@@ -8,8 +8,7 @@
 
 import UIKit
 
-// Method 1: Use of Dictionary
-var imageCache = NSCache<AnyObject, AnyObject>()
+// third method is to use URLSession default cache: but it buffer size is restricted unless we bump up its cache size
 
 class FeedCell: UICollectionViewCell {
 
@@ -27,24 +26,18 @@ class FeedCell: UICollectionViewCell {
             
             if let statusImageUrl = post?.statusImageUrl {
                 
-                if let image = imageCache.object(forKey: statusImageUrl as AnyObject) as? UIImage {
-                    postImageView.image = image
-                    loader.stopAnimating()
-                }
-                else {
-                    URLSession.shared.dataTask(with: URL(string: statusImageUrl)!, completionHandler: { (data, response, error) in
-                        if error != nil{
-                            print(error!)
-                            return
-                        }
-                        let image = UIImage(data: data!)
-                        imageCache.setObject(image!, forKey: statusImageUrl as AnyObject)
-                        DispatchQueue.main.async(execute: { () -> Void in
-                            self.postImageView.image = image
-                            self.loader.stopAnimating()
-                        })
-                    }).resume()
-                }
+                URLSession.shared.dataTask(with: URL(string: statusImageUrl)!, completionHandler: { (data, response, error) in
+                    if error != nil{
+                        print(error!)
+                        return
+                    }
+                    let image = UIImage(data: data!)
+                    
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        self.postImageView.image = image
+                        self.loader.stopAnimating()
+                    })
+                }).resume()
             }
             
         }
