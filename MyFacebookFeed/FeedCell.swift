@@ -20,6 +20,22 @@ class FeedCell: UICollectionViewCell {
     
     var post: Post? {
         didSet {
+            postImageView.image = nil
+            loader.startAnimating()
+            
+            if let statusImageUrl = post?.statusImageUrl {
+                URLSession.shared.dataTask(with: URL(string: statusImageUrl)!, completionHandler: { (data, response, error) in
+                    if error != nil{
+                        print(error!)
+                        return
+                    }
+                    let image = UIImage(data: data!)
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        self.postImageView.image = image
+                        self.loader.stopAnimating()
+                    })
+                }).resume()
+            }
             
         }
     }
@@ -40,9 +56,20 @@ class FeedCell: UICollectionViewCell {
         if let profileImageName = post?.profileImageName {
             profileImageView.image = UIImage(named: profileImageName)
         }
-        if let statusImageName = post?.statusImageName {
-            postImageView.image = UIImage(named: statusImageName)
-        }
+        
+        setupStatusImageViewLoader()
+        
+    }
+    
+    let loader = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+    
+    func setupStatusImageViewLoader() {
+        loader.hidesWhenStopped = true
+        loader.startAnimating()
+        loader.color = .black
+        postImageView.addSubview(loader)
+        postImageView.addConstraintsWithFormat("H:|[v0]|", views: loader)
+        postImageView.addConstraintsWithFormat("V:|[v0]", views: loader)
     }
 
 }
