@@ -9,7 +9,7 @@
 import UIKit
 
 // Method 1: Use of Dictionary
-var imageCache = [String: UIImage]()
+var imageCache = NSCache<AnyObject, AnyObject>()
 
 class FeedCell: UICollectionViewCell {
 
@@ -27,7 +27,7 @@ class FeedCell: UICollectionViewCell {
             
             if let statusImageUrl = post?.statusImageUrl {
                 
-                if let image = imageCache[statusImageUrl] {
+                if let image = imageCache.object(forKey: statusImageUrl as AnyObject) as? UIImage {
                     postImageView.image = image
                     loader.stopAnimating()
                 }
@@ -38,7 +38,7 @@ class FeedCell: UICollectionViewCell {
                             return
                         }
                         let image = UIImage(data: data!)
-                        imageCache[statusImageUrl] = image
+                        imageCache.setObject(image!, forKey: statusImageUrl as AnyObject)
                         DispatchQueue.main.async(execute: { () -> Void in
                             self.postImageView.image = image
                             self.loader.stopAnimating()
