@@ -8,6 +8,9 @@
 
 import UIKit
 
+// Method 1: Use of Dictionary
+var imageCache = [String: UIImage]()
+
 class FeedCell: UICollectionViewCell {
 
     @IBOutlet weak var likeButton: UIButton!
@@ -21,20 +24,27 @@ class FeedCell: UICollectionViewCell {
     var post: Post? {
         didSet {
             postImageView.image = nil
-            loader.startAnimating()
             
             if let statusImageUrl = post?.statusImageUrl {
-                URLSession.shared.dataTask(with: URL(string: statusImageUrl)!, completionHandler: { (data, response, error) in
-                    if error != nil{
-                        print(error!)
-                        return
-                    }
-                    let image = UIImage(data: data!)
-                    DispatchQueue.main.async(execute: { () -> Void in
-                        self.postImageView.image = image
-                        self.loader.stopAnimating()
-                    })
-                }).resume()
+                
+                if let image = imageCache[statusImageUrl] {
+                    postImageView.image = image
+                    loader.stopAnimating()
+                }
+                else {
+                    URLSession.shared.dataTask(with: URL(string: statusImageUrl)!, completionHandler: { (data, response, error) in
+                        if error != nil{
+                            print(error!)
+                            return
+                        }
+                        let image = UIImage(data: data!)
+                        imageCache[statusImageUrl] = image
+                        DispatchQueue.main.async(execute: { () -> Void in
+                            self.postImageView.image = image
+                            self.loader.stopAnimating()
+                        })
+                    }).resume()
+                }
             }
             
         }
