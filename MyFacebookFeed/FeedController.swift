@@ -34,6 +34,7 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let feedCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! FeedCell
         
         feedCell.post = posts[indexPath]
+        feedCell.feedController = self
         feedCell.configureCell()
         
         return feedCell
@@ -58,6 +59,79 @@ class FeedController: UICollectionViewController, UICollectionViewDelegateFlowLa
         super.viewWillTransition(to: size, with: coordinator)
         
         collectionView?.collectionViewLayout.invalidateLayout()
+    }
+    
+    let zoomImageView = UIImageView()
+    let blackBackgroundView = UIView()
+    var postImageView: UIImageView?
+    let navBarCover = UIView()
+    let tabBarCover = UIView()
+    
+    func animateImageView(postImageView: UIImageView) {
+        
+        self.postImageView = postImageView
+        
+        if let startingFrame = postImageView.superview?.convert(postImageView.frame, to: nil) {
+            
+            postImageView.alpha = 0
+            
+            blackBackgroundView.frame = self.view.bounds
+            blackBackgroundView.backgroundColor = .black
+            blackBackgroundView.alpha = 0
+            view.addSubview(blackBackgroundView)
+            
+            navBarCover.frame = CGRect(x: 0, y: 0, width: 1000, height: 20 + 44)
+            navBarCover.backgroundColor = .black
+            navBarCover.alpha = 0
+            
+            if let keyWindow = UIApplication.shared.keyWindow {
+                keyWindow.addSubview(navBarCover)
+                
+                tabBarCover.frame = CGRect(x: 0, y: keyWindow.frame.height - 49, width: 1000, height: 49)
+                tabBarCover.backgroundColor = .black
+                tabBarCover.alpha = 0
+                keyWindow.addSubview(tabBarCover)
+            }
+            
+            zoomImageView.backgroundColor = .red
+            zoomImageView.isUserInteractionEnabled = true
+            zoomImageView.image = postImageView.image
+            zoomImageView.contentMode = .scaleAspectFill
+            zoomImageView.clipsToBounds = true
+            zoomImageView.frame = startingFrame
+            view.addSubview(zoomImageView)
+            
+            zoomImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(FeedController.zoomOut)))
+            
+            UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: { 
+                let height = (self.view.frame.width / startingFrame.width) * startingFrame.height
+                let y = self.view.frame.height / 2 - height / 2
+                self.zoomImageView.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: height);
+                self.blackBackgroundView.alpha = 1
+                self.navBarCover.alpha = 1
+                self.tabBarCover.alpha = 1
+            }, completion: nil)
+        }
+        
+    }
+    
+    func zoomOut() {
+        
+        if let startingFrame = postImageView!.superview?.convert(postImageView!.frame, to: nil) {
+            UIView.animate(withDuration: 0.75, animations: { 
+                self.zoomImageView.frame = startingFrame
+                self.blackBackgroundView.alpha = 0
+                self.navBarCover.alpha = 0
+                self.tabBarCover.alpha = 0
+            }, completion: { (didComplete) in
+                self.zoomImageView.removeFromSuperview()
+                self.blackBackgroundView.removeFromSuperview()
+                self.navBarCover.removeFromSuperview()
+                self.tabBarCover.removeFromSuperview()
+                self.postImageView?.alpha = 1
+            })
+        }
+        
     }
 
 }

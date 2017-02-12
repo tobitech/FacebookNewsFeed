@@ -20,6 +20,8 @@ class FeedCell: UICollectionViewCell {
     @IBOutlet weak var statusTextView: UITextView!
     @IBOutlet weak var postImageView: UIImageView!
     
+    var feedController: FeedController?
+    
     var post: Post? {
         didSet {
             postImageView.image = nil
@@ -60,8 +62,15 @@ class FeedCell: UICollectionViewCell {
             profileImageView.image = UIImage(named: profileImageName)
         }
         
+        postImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:#selector(FeedCell.animate as (FeedCell) -> () -> ())))
+        
         setupStatusImageViewLoader()
         
+    }
+    
+    func animate() {
+        
+        feedController?.animateImageView(postImageView: postImageView)
     }
     
     let loader = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)

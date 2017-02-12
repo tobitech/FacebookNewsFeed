@@ -58,7 +58,7 @@
         <scene sceneID="1Lw-7j-OmG">
             <objects>
                 <collectionViewController id="ioA-IU-fFP" customClass="FeedController" customModule="MyFacebookFeed" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" id="Rb9-Uh-Sr2">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="Rb9-Uh-Sr2">
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -70,7 +70,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellId" id="57g-95-pDo" customClass="FeedCell" customModule="MyFacebookFeed" customModuleProvider="target">
-                                <rect key="frame" x="1" y="0.0" width="374" height="400"/>
+                                <rect key="frame" x="0.5" y="0.0" width="374" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="400"/>
@@ -105,8 +105,9 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="zuckdog" translatesAutoresizingMaskIntoConstraints="NO" id="ghM-i7-J80">
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="zuckdog" translatesAutoresizingMaskIntoConstraints="NO" id="ghM-i7-J80">
                                             <rect key="frame" x="0.0" y="117" width="374" height="205"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="205" id="HJ2-im-FxA"/>
                                             </constraints>
@@ -237,7 +238,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5GM-iZ-zFW" id="peb-ZE-PzD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -266,7 +267,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Ve-rC-whB" id="oeH-9i-PHX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -295,7 +296,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zXb-Ot-VRX" id="NIq-Uk-jKE">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -324,7 +325,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qxe-7f-JGd" id="C2e-bG-dQ7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -345,7 +346,7 @@
             <objects>
                 <navigationController id="WLZ-b4-2y4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="More" image="more_icon" id="9QK-cv-pqi"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="0mv-Fi-eok">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0mv-Fi-eok">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.20000000000000001" green="0.35294117650000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -363,7 +364,7 @@
             <objects>
                 <navigationController id="CBm-gm-Eih" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Notifications" image="globe_icon" id="HBP-Lx-2Pc"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="IAJ-RQ-z3G">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IAJ-RQ-z3G">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.20000000000000001" green="0.35294117650000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -381,7 +382,7 @@
             <objects>
                 <navigationController id="plH-e4-fcQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Messenger" image="messenger_icon" id="maQ-eT-ZPB"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nU1-Wu-9MH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nU1-Wu-9MH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.20000000000000001" green="0.35294117650000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -399,7 +400,7 @@
             <objects>
                 <navigationController id="AON-ie-aNQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Requests" image="requests_icon" id="O2X-1E-Lq3"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="87p-Mf-YBe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="87p-Mf-YBe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.20000000000000001" green="0.35294117650000001" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
